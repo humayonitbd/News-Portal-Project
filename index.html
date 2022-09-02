@@ -12,6 +12,18 @@
             width: 50px;
 
         }
+        @media screen and (max-width: 600px){
+            .categoryitem{
+                background: red;
+                flex-direction: column;
+                padding: 20px;
+                border-radius: 15px;
+                color: white;
+                font-size: 17px;
+                text-align: left;
+            }
+            
+        }
     </style>
 </head>
 <body>
@@ -43,7 +55,7 @@
         <!-- //all category select  -->
         <section class="my-5">
             
-            <ul id="allCategorySec" class="d-flex justify-content-between">
+            <ul id="allCategorySec" class="d-flex justify-content-between categoryitem">
 
             </ul>
             
@@ -58,12 +70,7 @@
 
         <!-- //load news blog display  -->
         <section id="blog-container" class="row row-cols-1 row-cols-md-2 g-3">
-            <!-- <div class="text-center d-none" id="spinner-container">
-                <div class="spinner-border text-primary" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                  </div>
-            </div>
-            -->
+            <h3 class="text-center d-none" id="no-post">Not blog post !!</h3>
 
             
         </section>
@@ -74,7 +81,30 @@
               </div>
         </div>
     </section>
-       
+    <!-- modal section  -->
+       <section>
+        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Launch demo modal
+          </button> -->
+          
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                  
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+       </section>
 
 
     </main>

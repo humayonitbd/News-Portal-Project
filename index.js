@@ -38,16 +38,15 @@ const loadNewsDetails = async(ctgId) => {
 const displayNewsDetails = (newsBlog) => {
     console.log(newsBlog);
     const newsLength = newsBlog.length;
-    //     console.log(newsLength);
-    const arrayIteem = document.getElementById('itemNumber');
-    arrayIteem.innerText = newsLength;
-    const blogNewsContainer = document.getElementById('blog-container');
-    blogNewsContainer.innerHTML = '';
-    newsBlog.forEach(blog => {
+        const arrayIteem = document.getElementById('itemNumber');
+        arrayIteem.innerText = newsLength;
+        const blogNewsContainer = document.getElementById('blog-container');
+        blogNewsContainer.innerHTML = '';
+        newsBlog.forEach(blog => {
         console.log(blog);
         const div = document.createElement('div');
         div.innerHTML = `
-        <div class="card mb-3">
+        <div onclick="dataLoadPopop('${blog._id}')" class="card mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
         <div class="row g-0">
           <div class="col-md-4">
             <img src="${blog.thumbnail_url}" class="img-fluid rounded-start w-100" alt="...">
@@ -77,8 +76,53 @@ const displayNewsDetails = (newsBlog) => {
         
     });
     spinnerLoad(false);
+    
+    
+}
+// displayNewsDetails()
+
+const dataLoadPopop = async(newsId) =>{
+    const url = `https://openapi.programming-hero.com/api/news/${newsId}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    dataDetailsPopop(data.data);
 
 }
+
+const dataDetailsPopop = (details) => {
+    // console.log(details);
+    details.forEach(data => {
+        console.log(data)
+        const header = document.getElementById('exampleModalLabel');
+        header.innerText = data.title;
+
+        const modalBody = document.getElementById('modalBody');
+        modalBody.innerHTML = `
+        <img src="${data.thumbnail_url}" class="img-fluid w-100" alt="athor">
+        <p>${data.details.slice(0, 300)}...</p>
+        <div class="d-flex">
+                <img src="${data.author.img}" class="img-fluid imgsize rounded-5 me-2" alt="athor">
+                <div>
+                    <h5 class="p-0 m-0">${data.author.name ? data.author.name : 'Not name'}</h5>
+                    <span>${data.author.published_date ? data.author.published_date : 'No date'}</span>
+                </div>
+            </div>
+            <div>
+                <p class="my-2">Rating: ${data.rating.number}, Bagse: ${data.rating.badge}, Total-view: ${data.total_view}</p>
+                <p class="my-2">Total-view: ${data.total_view}</p>
+                </div>
+        `;
+        
+    });
+
+}
+
+
+
+
+
+
+
 // loadNewsDetails('3')
 // displayNewsDetails('2')
 
@@ -92,7 +136,7 @@ const spinnerLoad = (spinnerId) => {
 }
 
 
-
-
+// displayNewsDetails()
+// loadNewsDetails()
 loadAllNews();
 
