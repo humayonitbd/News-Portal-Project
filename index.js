@@ -148,8 +148,6 @@ const spinnerLoad = (spinnerId) => {
     }
 }
 
-
-
 loadNewsDetails('01')
 loadAllNews();
 
