@@ -78,7 +78,7 @@ const displayNewsDetails = (newsBlog) => {
                 </div>
             </div>
             <div class="viewAll">
-                <span>View ${blog.total_view ? blog.total_view : '0'}</span>
+                <span><i class="fa-regular fa-eye"></i> ${blog.total_view ? blog.total_view : '0'}</span>
             </div>
             <button class="btn btn-primary">Details</button>
           </div>
@@ -121,7 +121,7 @@ const dataDetailsPopop = (details) => {
         const modalBody = document.getElementById('modalBody');
         modalBody.innerHTML = `
         <img src="${data.thumbnail_url}" class="img-fluid w-100" alt="athor">
-        <p>${data.details.slice(0, 300)}...</p>
+        <p>${data.details.slice(0, 200)}...</p>
         <div class="d-flex">
                 <img src="${data.author.img}" class="img-fluid imgsize rounded-5 me-2" alt="athor">
                 <div>
@@ -131,7 +131,7 @@ const dataDetailsPopop = (details) => {
             </div>
             <div>
                 <p class="my-2">Rating: ${data.rating.number}, Bagse: ${data.rating.badge}</p>
-                <p class="my-2">Total-view: ${data.total_view ? data.total_view : 'not view'}</p>
+                <p class="my-2">Total-view: <i class="fa-regular fa-eye"></i> ${data.total_view ? data.total_view : 'not view'}</p>
                 </div>
         `;
         
