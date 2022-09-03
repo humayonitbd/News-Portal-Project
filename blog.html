@@ -31,6 +31,60 @@
             </div>
           </nav>
     </header>
+
+    <main class="container">
+      <section class="my-5">
+        <div class="accordion" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                var let এবং const এর পার্থক্য কি?
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                var ঘোষণা বিশ্বব্যাপী স্কোপড বা ফাংশন স্কোপড এবং let এবং const ব্লক স্কোপড। · var ভেরিয়েবল আপডেট এবং পুনরায় ঘোষণা করা যেতে পারে । একটি constবস্তু আপডেট করা যাবে না, এই বস্তুর বৈশিষ্ট্য আপডেট করা যেতে পারে.let কীওয়ার্ড দিয়ে সংজ্ঞায়িত ভেরিয়েবলটিকে পুনরায় ঘোষণা করতে পারে না তবে এটি আপডেট করতে পারে।যখন ব্যবহারকারীরা একটি কনস্ট ভেরিয়েবল ঘোষণা করে, তখন তাদের এটি শুরু করতে হবে, অন্যথায়, এটি একটি ত্রুটি ফেরত দেয়। ব্যবহারকারী কনস্ট ভেরিয়েবলটি ঘোষণা করার পরে আপডেট করতে পারে না। 
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Arrow ফাংশন এবং Normal ফাংশনের পার্থক্য কী?
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <h5>Normal Function :</h5>
+                <ol>
+                  <li>
+                    একটি নিয়মিত জাভাস্ক্রিপ্ট ফাংশনের ভিতরে, thisমান (ওরফে এক্সিকিউশন প্রসঙ্গ) গতিশীল।গতিশীল প্রেক্ষাপটের অর্থ হল এর মান কীভাবে ফাংশনটি আহ্বান করা হয়েছে তার thisউপর নির্ভর করে । জাভাস্ক্রিপ্টে, 4টি উপায়ে আপনি একটি নিয়মিত ফাংশন চালু করতে পারেন।একটি নিয়মিত ফাংশনের মূল অংশের ভিতরে, argumentsএকটি বিশেষ অ্যারের মতো বস্তু যা আর্গুমেন্টের তালিকা ধারণ করে যার সাথে ফাংশনটি আহ্বান করা হয়েছে।
+                  </li>
+                </ol>
+                <h5>Arrow Function :</h5>
+                <ol>
+                  <li>
+                    একটি তীর ফাংশনের ভিতরের আচরণ thisনিয়মিত ফাংশনের thisআচরণ থেকে যথেষ্ট আলাদা। তীর ফাংশন তার নিজস্ব এক্সিকিউশন প্রসঙ্গ সংজ্ঞায়িত করে না।কিভাবে বা কোথায় নির্বাহ করা হচ্ছে তা কোন ব্যাপার না this, একটি তীর ফাংশনের ভিতরের মান সবসময় thisবাইরের ফাংশনের মানের সমান হয়। অন্য কথায়, তীর ফাংশন thisআভিধানিকভাবে সমাধান করে।অন্যদিকে, argumentsতীর ফাংশনের ভিতরে কোন বিশেষ কীওয়ার্ড সংজ্ঞায়িত করা হয় না। আবার (মানের সাথে একই this), argumentsবস্তুটি আভিধানিকভাবে সমাধান করা হয়: তীর ফাংশনটি argumentsবাইরের ফাংশন থেকে অ্যাক্সেস করে।
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                map, find, foreach filter এর মধ্যে পার্থক্য কী?
+              </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                map() এবং forEach() এর মধ্যে প্রথম পার্থক্য হল রিটার্নিং মান। forEach() পদ্ধতি অনির্ধারিত রিটার্ন করে এবং ম্যাপ() রূপান্তরিত উপাদানগুলির সাথে একটি নতুন অ্যারে প্রদান করে। তারা একই কাজ করলেও রিটার্নিং ভ্যালু আলাদা থাকে।filter() পদ্ধতিটি সমস্ত উপাদান ফিল্টার করতে ব্যবহৃত হয় এবং যে উপাদানটি মেলে তা ফেরত দেয় এবং যে উপাদানটি মেলে না তা সরানো হয়।Find() পদ্ধতিটি নির্বাচিত এলিমেন্টের সমস্ত  উপাদান  এর মধ্যে নির্ধারিত একটি উপাদান খুঁজে বের করতে ব্যবহৃত হয়।
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+  </main>
     
 
 

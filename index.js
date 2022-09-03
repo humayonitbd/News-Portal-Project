@@ -4,6 +4,7 @@ const loadAllNews = async() => {
     const res = await fetch(url);
     const data = await res.json();
     displayCategory(data.data.news_category);
+
 }
 
 
@@ -11,19 +12,15 @@ const displayCategory = (newsAll) => {
     // console.log(newsAll);
     const allCategorySec = document.getElementById('allCategorySec');
     newsAll.forEach(news => {
-        console.log(news);
+        // console.log(news);
         const li = document.createElement('li');
         li.classList.add(('list-unstyled'));
         li.innerHTML = `
             <a onclick="loadNewsDetails('${news.category_id}')">${news.category_name}</a>
         `;
-        allCategorySec.appendChild(li);
-
-        
+        allCategorySec.appendChild(li); 
     });
-
 }
-
 const loadNewsDetails = async(ctgId) => {
     spinnerLoad(true);
     // console.log(ctgId);
@@ -31,19 +28,17 @@ const loadNewsDetails = async(ctgId) => {
     const res = await fetch(url);
     const data = await res.json();
     displayNewsDetails(data.data);
-    
 }
 
 
 const displayNewsDetails = (newsBlog) => {
-    console.log(newsBlog);
+    // console.log(newsBlog);
     const newsLength = newsBlog.length;
         const arrayIteem = document.getElementById('itemNumber');
         arrayIteem.innerText = newsLength;
         const blogNewsContainer = document.getElementById('blog-container');
         blogNewsContainer.innerHTML = '';
         newsBlog.forEach(blog => {
-        console.log(blog);
         const div = document.createElement('div');
         div.innerHTML = `
         <div onclick="dataLoadPopop('${blog._id}')" class="card mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -60,12 +55,13 @@ const displayNewsDetails = (newsBlog) => {
                 <img src="${blog.author.img}" class="img-fluid imgsize rounded-5 me-2" alt="athor">
                 <div>
                     <h5 class="p-0 m-0">${blog.author.name ? blog.author.name : 'Not name'}</h5>
-                    <span>${blog.author.published_date ? blog.author.published_date : 'No date'}</span>
+                    <span>${blog.author.published_date ? blog.author.published_date.slice(0, 10) : 'No date'}</span>
                 </div>
             </div>
             <div class="viewAll">
                 <span>View ${blog.total_view ? blog.total_view : '0'}</span>
             </div>
+            <button class="btn btn-primary">Details</button>
           </div>
             </div>
           </div>
@@ -92,7 +88,7 @@ const dataLoadPopop = async(newsId) =>{
 const dataDetailsPopop = (details) => {
     // console.log(details);
     details.forEach(data => {
-        console.log(data)
+        // console.log(data)
         const header = document.getElementById('exampleModalLabel');
         header.innerText = data.title;
 
@@ -117,15 +113,6 @@ const dataDetailsPopop = (details) => {
 
 }
 
-
-
-
-
-
-
-// loadNewsDetails('3')
-// displayNewsDetails('2')
-
 const spinnerLoad = (spinnerId) => {
     const spinnerIdSec = document.getElementById('spinner-container');
     if(spinnerId){
@@ -136,7 +123,6 @@ const spinnerLoad = (spinnerId) => {
 }
 
 
-// displayNewsDetails()
-// loadNewsDetails()
+
 loadAllNews();
 
