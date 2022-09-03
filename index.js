@@ -43,23 +43,28 @@ const loadNewsDetails = async(ctgId) => {
     
 }
 
-
+// const blogNewsContainer = document.getElementById('blog-container');
+// const arrayIteem = document.getElementById('itemNumber');
+// arrayIteem.innerText = newsLength;
+        
 const displayNewsDetails = (newsBlog) => {
+    const blogNewsContainer = document.getElementById('blog-container');
+    const arrayIteem = document.getElementById('itemNumber');
+    const newsLength = newsBlog.length;
     const noPostData = document.getElementById('no-post');
     if(newsBlog.length === 0){
         noPostData.classList.remove('d-none');
+        blogNewsContainer.innerHTML = '';
+        arrayIteem.innerText = newsLength;
+        
     }
     else{
         newsBlog.sort((a, b) => {
         return b.total_view - a.total_view
         })
-        const newsLength = newsBlog.length;
-        const arrayIteem = document.getElementById('itemNumber');
         arrayIteem.innerText = newsLength;
-        const blogNewsContainer = document.getElementById('blog-container');
         blogNewsContainer.innerHTML = '';
         newsBlog.forEach(blog => {
-            // console.log(blog);
         const div = document.createElement('div');
         div.innerHTML = `
         <div onclick="dataLoadPopop('${blog._id}')" class="card mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -96,55 +101,10 @@ const displayNewsDetails = (newsBlog) => {
         noPostData.classList.add('d-none');
 
     }
-    // console.log(newsBlog);
-    // newsBlog.sort((a, b) => {
-    //     return b.total_view - a.total_view
-    // })
-    // const newsLength = newsBlog.length;
-    //     const arrayIteem = document.getElementById('itemNumber');
-    //     arrayIteem.innerText = newsLength;
-    //     const blogNewsContainer = document.getElementById('blog-container');
-    //     blogNewsContainer.innerHTML = '';
-    //     newsBlog.forEach(blog => {
-    //         // console.log(blog);
-    //     const div = document.createElement('div');
-    //     div.innerHTML = `
-    //     <div onclick="dataLoadPopop('${blog._id}')" class="card mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    //     <div class="row g-0">
-    //       <div class="col-md-4">
-    //         <img src="${blog.thumbnail_url}" class="img-fluid rounded-start w-100" alt="...">
-    //       </div>
-    //       <div class="col-md-8">
-    //         <div class="card-body">
-    //           <h5 class="card-title">${blog.title}</h5>
-    //           <p class="card-text">${blog.details.slice(0, 200)}...</p>
-    //           <div class="d-flex justify-content-between align-items-center">
-    //         <div class="d-flex">
-    //             <img src="${blog.author.img}" class="img-fluid imgsize rounded-5 me-2" alt="athor">
-    //             <div>
-    //                 <h5 class="p-0 m-0">${blog.author.name ? blog.author.name : 'Not name'}</h5>
-    //                 <span>${blog.author.published_date ? blog.author.published_date.slice(0, 10) : 'No date'}</span>
-    //             </div>
-    //         </div>
-    //         <div class="viewAll">
-    //             <span>View ${blog.total_view ? blog.total_view : '0'}</span>
-    //         </div>
-    //         <button class="btn btn-primary">Details</button>
-    //       </div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </div>
-    //     `;
-    //     blogNewsContainer.appendChild(div);
-        
-    // });
-
+    
     spinnerLoad(false);
     
-    
 }
-// displayNewsDetails()
 
 const dataLoadPopop = async(newsId) =>{
     const url = `https://openapi.programming-hero.com/api/news/${newsId}`;
