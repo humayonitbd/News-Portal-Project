@@ -1,9 +1,16 @@
 
 const loadAllNews = async() => {
     const url = `https://openapi.programming-hero.com/api/news/categories`;
-    const res = await fetch(url);
-    const data = await res.json();
-    displayCategory(data.data.news_category);
+    try{
+        const res = await fetch(url);
+        const data = await res.json();
+        displayCategory(data.data.news_category);
+    }
+    catch(err){
+        console.log(err);
+
+    }
+    
 
 }
 
@@ -25,20 +32,30 @@ const loadNewsDetails = async(ctgId) => {
     spinnerLoad(true);
     // console.log(ctgId);
     const url = `https://openapi.programming-hero.com/api/news/category/${ctgId}`;
-    const res = await fetch(url);
-    const data = await res.json();
-    displayNewsDetails(data.data);
+    try{
+        const res = await fetch(url);
+        const data = await res.json();
+        displayNewsDetails(data.data);
+    }
+    catch(err){
+        console.log(err)
+    }
+    
 }
 
 
 const displayNewsDetails = (newsBlog) => {
     // console.log(newsBlog);
+    newsBlog.sort((a, b) => {
+        return b.total_view - a.total_view
+    })
     const newsLength = newsBlog.length;
         const arrayIteem = document.getElementById('itemNumber');
         arrayIteem.innerText = newsLength;
         const blogNewsContainer = document.getElementById('blog-container');
         blogNewsContainer.innerHTML = '';
         newsBlog.forEach(blog => {
+            // console.log(blog);
         const div = document.createElement('div');
         div.innerHTML = `
         <div onclick="dataLoadPopop('${blog._id}')" class="card mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -79,9 +96,15 @@ const displayNewsDetails = (newsBlog) => {
 
 const dataLoadPopop = async(newsId) =>{
     const url = `https://openapi.programming-hero.com/api/news/${newsId}`;
-    const res = await fetch(url);
-    const data = await res.json();
-    dataDetailsPopop(data.data);
+    try{
+        const res = await fetch(url);
+        const data = await res.json();
+        dataDetailsPopop(data.data);
+    }
+    catch(err){
+        console.log(err);
+    }
+    
 
 }
 
@@ -100,12 +123,12 @@ const dataDetailsPopop = (details) => {
                 <img src="${data.author.img}" class="img-fluid imgsize rounded-5 me-2" alt="athor">
                 <div>
                     <h5 class="p-0 m-0">${data.author.name ? data.author.name : 'Not name'}</h5>
-                    <span>${data.author.published_date ? data.author.published_date : 'No date'}</span>
+                    <span>${data.author.published_date ? data.author.published_date.slice(0, 10) : 'No date'}</span>
                 </div>
             </div>
             <div>
-                <p class="my-2">Rating: ${data.rating.number}, Bagse: ${data.rating.badge}, Total-view: ${data.total_view}</p>
-                <p class="my-2">Total-view: ${data.total_view}</p>
+                <p class="my-2">Rating: ${data.rating.number}, Bagse: ${data.rating.badge}</p>
+                <p class="my-2">Total-view: ${data.total_view ? data.total_view : 'not view'}</p>
                 </div>
         `;
         
