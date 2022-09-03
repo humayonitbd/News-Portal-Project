@@ -131,7 +131,7 @@ const dataDetailsPopop = (details) => {
             </div>
             <div>
                 <p class="my-2">Rating: ${data.rating.number}, Bagse: ${data.rating.badge}</p>
-                <p class="my-2">Total-view: <i class="fa-regular fa-eye"></i> ${data.total_view ? data.total_view : 'not view'}</p>
+                <p class="my-2">Total-view: <i class="fa-regular fa-eye"></i> ${data.total_view ? data.total_view : 'no view'}</p>
                 </div>
         `;
         
