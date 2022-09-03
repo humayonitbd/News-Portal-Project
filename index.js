@@ -16,10 +16,8 @@ const loadAllNews = async() => {
 
 
 const displayCategory = (newsAll) => {
-    // console.log(newsAll);
     const allCategorySec = document.getElementById('allCategorySec');
     newsAll.forEach(news => {
-        // console.log(news);
         const li = document.createElement('li');
         li.classList.add(('list-unstyled'));
         li.innerHTML = `
@@ -30,7 +28,6 @@ const displayCategory = (newsAll) => {
 }
 const loadNewsDetails = async(ctgId) => {
     spinnerLoad(true);
-    // console.log(ctgId);
     const url = `https://openapi.programming-hero.com/api/news/category/${ctgId}`;
     try{
         const res = await fetch(url);
@@ -43,10 +40,6 @@ const loadNewsDetails = async(ctgId) => {
     
 }
 
-// const blogNewsContainer = document.getElementById('blog-container');
-// const arrayIteem = document.getElementById('itemNumber');
-// arrayIteem.innerText = newsLength;
-        
 const displayNewsDetails = (newsBlog) => {
     const blogNewsContainer = document.getElementById('blog-container');
     const arrayIteem = document.getElementById('itemNumber');
@@ -121,9 +114,7 @@ const dataLoadPopop = async(newsId) =>{
 }
 
 const dataDetailsPopop = (details) => {
-    // console.log(details);
     details.forEach(data => {
-        // console.log(data)
         const header = document.getElementById('exampleModalLabel');
         header.innerText = data.title;
 
@@ -159,5 +150,7 @@ const spinnerLoad = (spinnerId) => {
 
 
 
+loadNewsDetails('01')
 loadAllNews();
+
 
